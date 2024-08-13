@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { User } from '../user';
 import { LoginUserService } from '../login-user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-login',
@@ -8,8 +9,9 @@ import { LoginUserService } from '../login-user.service';
   styleUrls: ['./user-login.component.scss'],
 })
 export class UserLoginComponent {
+  
   user : User = new User()
-  constructor(private loginService : LoginUserService) {}
+  constructor(private loginService : LoginUserService,private router: Router) {}
 
   ngOnInit() {
     console.log('User Login Component Initiated');
@@ -23,5 +25,10 @@ export class UserLoginComponent {
     },error => {
       alert('Please Enter Correct UserID or Password');
     })
+  }
+
+  goToRegister(){
+    console.log("InsideGoToRegisterMethod");
+    this.router.navigate(['/register']);
   }
 }

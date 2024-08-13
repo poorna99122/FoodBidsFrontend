@@ -28,6 +28,7 @@
 <!-- ----------------------------------------------- -->
 
 <!-- Login 6 - Bootstrap Brain Component -->
+ <router-outlet></router-outlet>
 <section class="p-3 p-md-4 p-xl-5">
   <div class="container">
     <div class="row justify-content-center">
@@ -103,9 +104,7 @@
                 <div
                   class="d-flex gap-2 gap-md-4 flex-column flex-md-row justify-content-md-end"
                 >
-                  <a href="#!" class="link-secondary text-decoration-none"
-                    >Create new account</a
-                  >
+                  <button class="link-secondary text-decoration-none" style="border: none; background: none;" (click)="goToRegister()">Create new account</button>
                   <a href="#!" class="link-secondary text-decoration-none"
                     >Forgot password</a
                   >
