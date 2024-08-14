@@ -15,33 +15,33 @@
                 </div>
               </div>
             </div>
-            <form  (ngSubmit)="userLogin()">
+            <!-- <form  (ngSubmit)="userLogin()"> -->
+              <form [formGroup]="userForm"  (ngSubmit)="userLogin()">
               <div class="row gy-3 overflow-hidden">
                 <div class="col-12">
                   <div class="form-floating mb-3">
                     <input
-                      type="text"
-                      class="form-control"
-                      [(ngModel)]="user.userId"
-                      id="userID" name="userID"
-                      placeholder="name@example.com"
-                      required
-                    />
+                    type="text"
+                    class="form-control"
+                    formControlName="userId"
+                    id="userID" name="userID"
+                    placeholder="name@example.com"
+                  />
                     <label for="userID" class="form-label">User Id</label>
                   </div>
                 </div>
                 <div class="col-12">
                   <div class="form-floating mb-3">
                     <input
-                      type="password"
-                      class="form-control"
-                      [(ngModel)]="user.password"
-                      name="password"
-                      id="password"
-                      value=""
-                      placeholder="Password"
-                      required
-                    />
+                    type="password"
+                    class="form-control"
+                    formControlName="password"
+                    name="password"
+                    id="password"
+                    value=""
+                    placeholder="Password"
+                  />
+                  
                     <label for="password" class="form-label">Password</label>
                   </div>
                 </div>

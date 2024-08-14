@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { User } from '../user';
 import { LoginUserService } from '../login-user.service';
 import { Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-user-login',
@@ -11,7 +12,13 @@ import { Router } from '@angular/router';
 export class UserLoginComponent {
   
   user : User = new User()
-  constructor(private loginService : LoginUserService,private router: Router) {}
+  userForm!: FormGroup;
+  constructor(private loginService : LoginUserService,private router: Router) {
+    this.userForm = new FormGroup({
+      userId: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required])
+    });
+  }
 
   ngOnInit() {
     console.log('User Login Component Initiated');
@@ -19,8 +26,9 @@ export class UserLoginComponent {
 
   userLogin(){
     console.log("userLoggedIn");
-    console.log(this.user);
-    this.loginService.loginUser(this.user).subscribe((data)=>{
+    console.log('formData',this.userForm.value);
+
+    this.loginService.loginUser(this.userForm.value).subscribe((data)=>{
       alert('Success');
     },error => {
       alert('Please Enter Correct UserID or Password');

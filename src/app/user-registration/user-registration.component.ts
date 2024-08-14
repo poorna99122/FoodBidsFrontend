@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UserReg } from '../user-reg';
+import { LoginUserService } from '../login-user.service';
 
 @Component({
   selector: 'app-user-registration',
@@ -7,6 +8,9 @@ import { UserReg } from '../user-reg';
   styleUrls: ['./user-registration.component.scss']
 })
 export class UserRegistrationComponent {
+  constructor(private loginService : LoginUserService){
+
+  }
 
   userReg : UserReg = new UserReg();
 
@@ -16,14 +20,13 @@ export class UserRegistrationComponent {
 
   userRegistration(){
     console.log("userReg",this.userReg);
-    // console.log(this.user);
-    // this.loginService.loginUser(this.user).subscribe((data)=>{
-    //   alert('Success');
-    // },error => {
-    //   alert('Please Enter Correct UserID or Password');
-    // })
+      this.loginService.register(this.userReg).subscribe((data)=>{
+        console.log(data);
+        alert("User Registered Successfully");
+      },error =>{
+        alert("User Registered Failed");
+      })
   }
-
 
 
 }
